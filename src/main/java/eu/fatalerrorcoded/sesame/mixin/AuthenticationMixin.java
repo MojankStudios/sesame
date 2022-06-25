@@ -11,7 +11,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public class AuthenticationMixin {
 	@Inject(method = "determineEnvironment", at = @At("HEAD"), cancellable = true, remap = false)
 	private static void customEnvironment(CallbackInfoReturnable<Environment> cir) {
-		String basePath = "http://localhost:8000";
+		String basePath = "https://yggoxide.insert.moe";
 		cir.setReturnValue(Environment.create(basePath, basePath, basePath, basePath, "PROD"));
 	}
 }
