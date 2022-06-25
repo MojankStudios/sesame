@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "id": "sesame",
+  "version": "${version}",
+
+  "name": "Sesame",
+  "description": "A mod to configure which servers the Yggdrasil authentication library uses.",
+  "authors": [
+    "FatalErrorCoded",
+    "insert"
+  ],
+  "contact": {
+    "homepage": "https://fabricmc.net/",
+    "sources": "https://github.com/FabricMC/fabric-example-mod"
+  },
+
+  "icon": "assets/sesame/icon.png",
+
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "eu.fatalerrorcoded.sesame.SesameMod"
+    ]
+  },
+  "mixins": [
+    "sesame.mixins.json"
+  ],
+  "accessWidener": "sesame.accesswidener",
+  "depends": {
+    "fabricloader": ">=0.14.8",
+    "fabric": "*",
+    "minecraft": "~1.19",
+    "java": ">=17"
+  }
+}
