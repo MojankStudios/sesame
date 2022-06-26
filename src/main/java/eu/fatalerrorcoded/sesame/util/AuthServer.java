@@ -12,6 +12,7 @@ public class AuthServer {
     public static String targetUsername = null;
     public static String targetAuthServer = null;
     public static String targetClientToken = null;
+    public static String targetAccessToken = null;
 
     public static void auth() {
         // Authenticate with Yggoxide
@@ -42,6 +43,7 @@ public class AuthServer {
             var data = gson.fromJson(response.body(), JsonObject.class);
 
             targetClientToken = data.get("clientToken").getAsString();
+            targetAccessToken = data.get("accessToken").getAsString();
             System.out.println("Successfully authenticated!");
         } catch (Exception err) {
             err.printStackTrace();

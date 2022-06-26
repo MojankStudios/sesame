@@ -5,6 +5,7 @@ import java.net.Proxy;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.ModifyVariable;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
@@ -29,6 +30,15 @@ public class AuthenticationMixin {
 	public void YggdrasilAuthenticationService(final Proxy proxy, final String clientToken, final Environment environment, CallbackInfo ci) {
 		if (AuthServer.targetClientToken != null) {
 			((AuthenticationAccessor) this).setClientToken(AuthServer.targetClientToken);
+		}
+	}
+
+	@ModifyVariable(method = "createUserApiService(Ljava/lang/String;)Lcom/mojang/authlib/minecraft/UserApiService;", at = @At("HEAD"), ordinal = 0, remap = false)
+	public String injectAccessToken(String token) {
+		if (AuthServer.targetAccessToken != null) {
+			return AuthServer.targetAccessToken;
+		} else {
+			return token;
 		}
 	}
 }

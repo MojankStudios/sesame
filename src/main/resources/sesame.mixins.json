@@ -4,11 +4,17 @@
   "package": "eu.fatalerrorcoded.sesame.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
+    "LoginHelloC2SPacketAccessor",
+    "LoginHelloC2SPacketMixin",
     "AuthenticationAccessor",
-    "AuthenticationMixin",
-    "MainMixin"
+    "AuthenticationMixin"
+  ],
+  "server": [
+    "ServerMainMixin"
   ],
   "client": [
+    "YggdrasilMinecraftSessionServiceMixin",
+    "ClientMainMixin",
     "SessionMixin"
   ],
   "injectors": {
