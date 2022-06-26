@@ -4,6 +4,7 @@
   "package": "eu.fatalerrorcoded.sesame.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
+    "AuthenticationAccessor",
     "AuthenticationMixin",
     "MainMixin"
   ],

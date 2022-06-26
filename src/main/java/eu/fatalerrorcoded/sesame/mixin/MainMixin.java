@@ -1,5 +1,6 @@
 package eu.fatalerrorcoded.sesame.mixin;
 
+
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -27,7 +28,10 @@ public class MainMixin {
 		
 		if (username != null) {
 			if (username.contains("@")) {
-				AuthServer.targetAuthServer = username.split("@")[1];
+				String[] segments = username.split("@");
+				AuthServer.targetUsername = segments[0];
+				AuthServer.targetAuthServer = segments[1];
+				AuthServer.auth();
 			}
 		}
 	}
