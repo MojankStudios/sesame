@@ -19,7 +19,7 @@ public class ClientMainMixin {
 				username = arg;
 				break;
 			} else {
-				if (arg.equals("--username")) {
+				if (arg.equals("--username") || arg.equals("-username")) {
 					found = true;
 				}
 			}
@@ -28,7 +28,7 @@ public class ClientMainMixin {
 		if (username != null) {
 			if (username.contains("@")) {
 				String[] segments = username.split("@");
-				AuthServer.targetUsername = segments[0];
+				AuthServer.targetUsername = username;
 				AuthServer.targetAuthServer = "https://" + segments[1];
 				AuthServer.auth();
 			}
