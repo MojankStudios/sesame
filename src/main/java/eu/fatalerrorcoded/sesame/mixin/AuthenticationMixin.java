@@ -28,15 +28,15 @@ public class AuthenticationMixin {
 
 	@Inject(method = "<init>(Ljava/net/Proxy;Ljava/lang/String;Lcom/mojang/authlib/Environment;)V", at = @At("TAIL"), remap = false)
 	public void YggdrasilAuthenticationService(final Proxy proxy, final String clientToken, final Environment environment, CallbackInfo ci) {
-		if (AuthServer.targetClientToken != null) {
-			((AuthenticationAccessor) this).setClientToken(AuthServer.targetClientToken);
+		if (AuthServer.activeClientToken != null) {
+			((AuthenticationAccessor) this).setClientToken(AuthServer.activeClientToken);
 		}
 	}
 
 	@ModifyVariable(method = "createUserApiService(Ljava/lang/String;)Lcom/mojang/authlib/minecraft/UserApiService;", at = @At("HEAD"), ordinal = 0, remap = false)
 	public String injectAccessToken(String token) {
-		if (AuthServer.targetAccessToken != null) {
-			return AuthServer.targetAccessToken;
+		if (AuthServer.activeAccessToken != null) {
+			return AuthServer.activeAccessToken;
 		} else {
 			return token;
 		}

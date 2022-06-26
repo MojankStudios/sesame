@@ -11,8 +11,11 @@ import com.google.gson.JsonPrimitive;
 public class AuthServer {
     public static String targetUsername = null;
     public static String targetAuthServer = null;
-    public static String targetClientToken = null;
-    public static String targetAccessToken = null;
+
+    public static String activeClientToken = null;
+    public static String activeAccessToken = null;
+    public static String activeUsername = null;
+    public static String activeUuid = null;
 
     public static void auth() {
         // Authenticate with Yggoxide
@@ -42,8 +45,13 @@ public class AuthServer {
             Gson gson = new Gson();
             var data = gson.fromJson(response.body(), JsonObject.class);
 
-            targetClientToken = data.get("clientToken").getAsString();
-            targetAccessToken = data.get("accessToken").getAsString();
+            activeClientToken = data.get("clientToken").getAsString();
+            activeAccessToken = data.get("accessToken").getAsString();
+
+            var user = data.get("user").getAsJsonObject();
+            activeUsername = user.get("username").getAsString();
+            activeUuid = user.get("id").getAsString();
+
             System.out.println("Successfully authenticated!");
         } catch (Exception err) {
             err.printStackTrace();
