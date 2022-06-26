@@ -7,7 +7,8 @@
     "LoginHelloC2SPacketAccessor",
     "LoginHelloC2SPacketMixin",
     "AuthenticationAccessor",
-    "AuthenticationMixin"
+    "AuthenticationMixin",
+    "PacketByteBufMixin"
   ],
   "server": [
     "ServerMainMixin"

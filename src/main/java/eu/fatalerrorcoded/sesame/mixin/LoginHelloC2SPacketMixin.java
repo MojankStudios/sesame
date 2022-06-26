@@ -4,6 +4,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyArg;
 
+import eu.fatalerrorcoded.sesame.util.Constants;
 import net.minecraft.network.packet.c2s.login.LoginHelloC2SPacket;
 
 @Mixin(LoginHelloC2SPacket.class)
@@ -17,7 +18,7 @@ public class LoginHelloC2SPacketMixin {
 		index = 0
 	)
 	private static int maxReadUsernameLength(int x) {
-		return 32;
+		return Constants.MAX_USERNAME_LENGTH;
 	}
 
 	@ModifyArg(
@@ -29,6 +30,6 @@ public class LoginHelloC2SPacketMixin {
 		index = 1
 	)
 	private int maxWriteUsernameLength(int maxLength) {
-		return 32;
+		return Constants.MAX_USERNAME_LENGTH;
 	}
 }
