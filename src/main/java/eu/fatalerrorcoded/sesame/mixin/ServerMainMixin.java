@@ -6,7 +6,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import eu.fatalerrorcoded.sesame.util.AuthServer;
-import net.minecraft.client.main.Main;
+import net.minecraft.server.Main;
 
 @Mixin(Main.class)
 public class ServerMainMixin {
