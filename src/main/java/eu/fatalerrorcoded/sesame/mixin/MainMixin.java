@@ -30,7 +30,7 @@ public class MainMixin {
 			if (username.contains("@")) {
 				String[] segments = username.split("@");
 				AuthServer.targetUsername = segments[0];
-				AuthServer.targetAuthServer = segments[1];
+				AuthServer.targetAuthServer = "https://" + segments[1];
 				AuthServer.auth();
 			}
 		}

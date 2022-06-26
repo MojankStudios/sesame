@@ -30,7 +30,7 @@ public class AuthServer {
             payload.add("password", new JsonPrimitive("password"));
             
             var request = HttpRequest.newBuilder()
-                .uri(new URI("https://" + AuthServer.targetAuthServer + "/authenticate"))
+                .uri(new URI(AuthServer.targetAuthServer + "/authenticate"))
                 .headers("Content-Type", "application/json")
                 .POST(HttpRequest.BodyPublishers.ofString(payload.toString()))
                 .build();
