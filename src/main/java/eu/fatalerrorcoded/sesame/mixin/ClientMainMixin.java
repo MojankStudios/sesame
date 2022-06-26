@@ -28,7 +28,7 @@ public class ClientMainMixin {
 		if (username != null) {
 			if (username.contains("@")) {
 				String[] segments = username.split("@");
-				AuthServer.targetUsername = username;
+				AuthServer.targetUsername = username.replace("@", "..");
 				AuthServer.targetAuthServer = "https://" + segments[1];
 				AuthServer.auth();
 			}
