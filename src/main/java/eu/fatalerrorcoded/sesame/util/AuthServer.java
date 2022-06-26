@@ -43,7 +43,7 @@ public class AuthServer {
             var response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
             Gson gson = new Gson();
-            var data = gson.fromJson(response.body(), JsonObject.class);
+            var data = gson.fromJson(response.body(), JsonPrimitive.class).getAsJsonObject();
 
             activeClientToken = data.get("clientToken").getAsString();
             activeAccessToken = data.get("accessToken").getAsString();
