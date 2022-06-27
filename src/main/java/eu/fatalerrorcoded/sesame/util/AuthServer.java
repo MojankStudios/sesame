@@ -8,6 +8,8 @@ import java.net.http.HttpResponse;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonPrimitive;
+import eu.fatalerrorcoded.sesame.SesameMod;
+
 public class AuthServer {
     public static String targetUsername = null;
     public static String targetAuthServer = null;
@@ -18,9 +20,9 @@ public class AuthServer {
     public static String activeUuid = null;
 
     public static void auth() {
-        // Authenticate with Yggoxide
+        // Authenticate with the set authentication server
         try {
-            System.out.println("Sending auth request to yggoxide server...");
+            SesameMod.LOGGER.info("Sending auth request to authentication server...");
 
             JsonObject agent = new JsonObject();
             agent.add("name", new JsonPrimitive("sesame"));
@@ -52,8 +54,9 @@ public class AuthServer {
             activeUsername = user.get("username").getAsString();
             activeUuid = user.get("id").getAsString();
 
-            System.out.println("Successfully authenticated!");
+            SesameMod.LOGGER.info("Successfully authenticated!");
         } catch (Exception err) {
+            SesameMod.LOGGER.error("Unable to authenticate");
             err.printStackTrace();
         }
     }

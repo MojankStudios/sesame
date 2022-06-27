@@ -6,7 +6,7 @@ import org.slf4j.LoggerFactory;
 
 public class SesameMod implements ModInitializer {
 
-	public static final Logger LOGGER = LoggerFactory.getLogger("sesame");
+	public static final Logger LOGGER = LoggerFactory.getLogger("Sesame");
 
 	@Override
 	public void onInitialize() {
